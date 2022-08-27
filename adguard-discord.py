@@ -20,7 +20,8 @@ ICON_PATH = "src/icon.png"
 ICON = open(ICON_PATH, "rb")
 ICON_BYTES = ICON.read()
 
-client = discord.Client()
+intents = discord.Intents(guilds=True, messages=True, message_content=True)
+client = discord.Client(intents=intents)
 
 
 def encode_auth(account, password):
@@ -106,10 +107,10 @@ async def on_ready():
     print(f"Logged in as Username: {client.user.name}")
     print(f"User ID: {client.user.id}")
     print("-----------")
-    await client.user.edit(avatar=ICON_BYTES)
 
     while True:
         await update_bot()
 
 while True:
     client.run(TOKEN)
+    client.user.edit(avatar=ICON_BYTES)
