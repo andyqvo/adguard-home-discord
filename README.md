@@ -48,7 +48,7 @@
 ### Usage
 1. To start your bot, run
     ```sh
-    python pihole.py
+    python adguard-discord.py
     ```
 
 ### Bot Commands
