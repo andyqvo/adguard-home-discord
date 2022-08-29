@@ -89,7 +89,7 @@ async def update_bot():
     info = fetch_info(ADGUARD_ACCOUNT, ADGUARD_PASSWORD)
     num_blocked_filtering = "{:,}".format(info.get("num_blocked_filtering"))
 
-    ads_blocked = f"AdGuard Home | {num_blocked_filtering} ads blocked today."
+    ads_blocked = f"AdGuard Home | {num_blocked_filtering} queries blocked today."
 
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=ads_blocked))
     await asyncio.sleep(int(UPDATE_FREQUENCY))
