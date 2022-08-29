@@ -63,13 +63,20 @@ async def help_command(channel_id):
 
 async def show_stats(channel_id):
     info = fetch_info(ADGUARD_ACCOUNT, ADGUARD_PASSWORD)
+
     num_dns_queries = "`{:,}`".format(info.get("num_dns_queries"))
     num_blocked_filtering = "`{:,}`".format(info.get("num_blocked_filtering"))
+    num_replaced_parental = "`{:,}`".format(info.get("num_replaced_parental"))
+    num_replaced_safebrowsing = "`{:,}`".format(info.get("num_replaced_safebrowsing"))
+    num_replaced_safesearch = "`{:,}`".format(info.get("num_replaced_safesearch"))
     avg_processing_time = "`{:,.2f}s`".format(info.get("avg_processing_time"))
 
     fields = [
-        {"name": "Total Queries", "value": num_dns_queries, "inline": False},
-        {"name": "Queries Blocked", "value": num_blocked_filtering, "inline": False},
+        {"name": "DNS Queries", "value": num_dns_queries, "inline": False},
+        {"name": "Blocked by Filters", "value": num_blocked_filtering, "inline": False},
+        {"name": "Blocked malware/phishing", "value": num_replaced_safebrowsing, "inline": False},
+        {"name": "Blocked adult websites", "value": num_replaced_parental, "inline": False},
+        {"name": "Enforced safe search", "value": num_replaced_safesearch, "inline": False},
         {"name": "Average Processing Time", "value": avg_processing_time, "inline": False}
     ]
 
