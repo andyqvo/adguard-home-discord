@@ -1,6 +1,6 @@
 import asyncio
 import base64
-from datetime import datetime
+import datetime
 import discord
 from dotenv import load_dotenv
 import os
@@ -43,15 +43,12 @@ def fetch_info(account, password):
 
 
 def build_embed(title="", description="", fields=[], color=0x239dd1):
-    embed = discord.Embed(title=title, description=description, color=color)
+    embed = discord.Embed(title=title, description=description, timestamp=datetime.datetime.now(), color=color)
 
     for field in fields:
         embed.add_field(name=field.get("name"), value=field.get("value"), inline=field.get("inline"))
 
-    now = datetime.now()
-    current_time = now.strftime("%H:%M:%S")
-
-    embed.set_footer(text=f"AdGuard Home Discord | {current_time}")
+    embed.set_footer(text=f"AdGuard Home Discord")
 
     return embed
 
