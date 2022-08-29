@@ -72,12 +72,12 @@ async def show_stats(channel_id):
     avg_processing_time = "`{:,.2f}s`".format(info.get("avg_processing_time"))
 
     fields = [
-        {"name": "DNS Queries", "value": num_dns_queries, "inline": False},
-        {"name": "Blocked by Filters", "value": num_blocked_filtering, "inline": False},
-        {"name": "Blocked malware/phishing", "value": num_replaced_safebrowsing, "inline": False},
-        {"name": "Blocked adult websites", "value": num_replaced_parental, "inline": False},
-        {"name": "Enforced safe search", "value": num_replaced_safesearch, "inline": False},
-        {"name": "Average Processing Time", "value": avg_processing_time, "inline": False}
+        {"name": "DNS Queries", "value": num_dns_queries, "inline": True},
+        {"name": "Blocked by Filters", "value": num_blocked_filtering, "inline": True},
+        {"name": "Blocked malware/phishing", "value": num_replaced_safebrowsing, "inline": True},
+        {"name": "Blocked adult websites", "value": num_replaced_parental, "inline": True},
+        {"name": "Enforced safe search", "value": num_replaced_safesearch, "inline": True},
+        {"name": "Average Processing Time", "value": avg_processing_time, "inline": True}
     ]
 
     embed = build_embed(title="Stats", fields=fields)
